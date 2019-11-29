@@ -146,7 +146,7 @@ The following provides a list of all the functions defined in `gcits.hf` grouped
 
 ### Fork
 
-GciTs offers a variety of `Fork` functions that take a callback. But since `node-ffi` supports async library calls, we don't need to do it ourselves.
+GciTs offers a variety of `Fork` functions that take a callback. Does C# have its own asychronyous functions?
 
 ```C
     BoolType   GciTsForkLogin(...);
@@ -166,7 +166,7 @@ The following are deprecated in favor of the underscore version.
     OopType    GciTsNewUtf8String(GciSession sess, ...);
 ```
 
-The following provide UTF-8 conversion that can be done in JavaScript.
+The following provide UTF-8 conversion. Can this be done in C#?
 
 ```C
     BoolType   GciUtf8To8bit(const char* src, char *dest, ssize_t destSize);
@@ -175,7 +175,7 @@ The following provide UTF-8 conversion that can be done in JavaScript.
 
 ### GCI Errors
 
-The following do not seem to work.
+The following did not seem to work but may have been fixed recently.
 
 ```C
     BoolType   GciTsClassRemoveAllMethods(GciSession sess, ...);
