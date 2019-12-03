@@ -1,7 +1,7 @@
 # GciForCSharp
 C# FFI wrapper for the GemStone C Interface (GCI)
 
-[GemStone](https://gemtalksystems.com/products/gs64/) is an object database and Smalltalk application runtime environment. You interact with the database through a dynamically linked C library available for Linux, macOS, and Windows. To use a C library from JavaScript we use [ffi-napi](https://github.com/node-ffi-napi/node-ffi-napi), a foreign function library wrapper that allows us to define C types, structures, and function entry points, then load and call a C library.
+[GemStone](https://gemtalksystems.com/products/gs64/) is an object database and Smalltalk application runtime environment. You interact with the database through a dynamically linked C library available for Linux, macOS, and Windows. To use a C library from C# we use the built-in FFI.
 
 GemBuilder for C documentation ([HTML](https://downloads.gemtalksystems.com/docs/GemStone64/3.4.x/GS64-GemBuilderC-3.4/GS64-GemBuilderC-3.4.htm) or [PDF](https://downloads.gemtalksystems.com/docs/GemStone64/3.4.x/GS64-GemBuilderforC-3.4.pdf)) describes the API for the *single-threaded* GCI library. We are using a new *thread-safe* library that has fewer functions (but more features). It is not separately documented, but has a header file, `gcits.hf`, that is the definitive specification (a recent copy is included with this checkout).
 
@@ -15,7 +15,7 @@ To add new function wrappers follow these steps:
 
 * Identify a new function from `gcits.hf` (pick from the list below);
 * Add it to GciLibrary with the appropriate name, arguments, and return type;
-* Add a wrapper function to GciSession to provide a JavaScript-like API;
+* Add a wrapper function to GciSession to provide a C#-like API;
 * Add a test to show that it works; and, finally,
 * Submit a pull request!
 
@@ -146,7 +146,7 @@ The following provides a list of all the functions defined in `gcits.hf` grouped
 
 ### Fork
 
-GciTs offers a variety of `Fork` functions that take a callback. But since `node-ffi` supports async library calls, we don't need to do it ourselves.
+GciTs offers a variety of `Fork` functions that take a callback. Does C# have its own asychronyous functions?
 
 ```C
     BoolType   GciTsForkLogin(...);
@@ -166,7 +166,7 @@ The following are deprecated in favor of the underscore version.
     OopType    GciTsNewUtf8String(GciSession sess, ...);
 ```
 
-The following provide UTF-8 conversion that can be done in JavaScript.
+The following provide UTF-8 conversion. Can this be done in C#?
 
 ```C
     BoolType   GciUtf8To8bit(const char* src, char *dest, ssize_t destSize);
@@ -175,7 +175,7 @@ The following provide UTF-8 conversion that can be done in JavaScript.
 
 ### GCI Errors
 
-The following do not seem to work.
+The following did not seem to work but may have been fixed recently.
 
 ```C
     BoolType   GciTsClassRemoveAllMethods(GciSession sess, ...);
