@@ -11,5 +11,9 @@ namespace GCI {
         {
             return GciVersion();
         }
+        public override long login()
+        {
+            return 0;
+        }
     }
 }

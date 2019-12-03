@@ -9,6 +9,8 @@ namespace GCI
             // Console.WriteLine("Hello World!");
             LibGciTs_3_5_0 lib = new LibGciTs_3_5_0();
             Console.WriteLine(lib.version());
+            long session = lib.login();
+            Console.WriteLine(session);
         }
     }
 }
